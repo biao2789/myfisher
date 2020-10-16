@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+# @Project : myfisher
+# @Time    : 2020/10/15 13:45
+# @Author  : Biao
+# @FileName: httper.py
+
+import requests
+
+class HTTP:
+	@staticmethod
+	def get(url,return_json =True):
+		r = requests.get(url,headers={'Connection':'close'})
+
+		if r.status_code !=200:
+			return {} if return_json else ''
+		return r.json() if return_json else r.text
